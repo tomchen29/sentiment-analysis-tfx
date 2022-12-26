@@ -76,4 +76,3 @@ GCP_AI_PLATFORM_SERVING_ARGS = {
     'regions': [GOOGLE_CLOUD_REGION],
 }
 
-TEST = '123'
