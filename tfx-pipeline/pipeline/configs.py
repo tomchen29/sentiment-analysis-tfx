@@ -23,7 +23,7 @@ except ImportError:
 # GCS_BUCKET_NAME = GOOGLE_CLOUD_PROJECT + '-kubeflowpipelines-default'
 GCS_BUCKET_NAME = GOOGLE_CLOUD_PROJECT + '-vertex-default'
 
-GOOGLE_CLOUD_REGION = 'us-east1'
+GOOGLE_CLOUD_REGION = 'us-central1'
 
 # GCP
 TRANSFORM_MODULE_FILE = 'gs://{}/{}/modules/preprocessing.py'.format(GCS_BUCKET_NAME, PIPELINE_NAME)
