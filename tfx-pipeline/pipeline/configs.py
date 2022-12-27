@@ -75,3 +75,5 @@ GCP_AI_PLATFORM_SERVING_ARGS = {
     # https://cloud.google.com/ml-engine/reference/rest/v1/projects.models#Model  # pylint: disable=line-too-long
     'regions': [GOOGLE_CLOUD_REGION],
 }
+
+TESTS = 123
