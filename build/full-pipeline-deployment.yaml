@@ -84,6 +84,24 @@ steps:
     id: "Manual Select Project Id"
     waitFor: ["Create Pipeline"]
 
+  - name: "gcr.io/cloud-builders/gsutil"
+    args:
+      [
+        "cp",
+        "gs://customized-credentials/ml-tutorial-372117-sa-keys.json",
+        "ml-tutorial-372117-sa-keys.json",
+      ]
+    id: "Copy Credential to Local"
+    waitFor: ["Manual Select Project Id"]
+
+  - name: "gcr.io/cloud-builders/gcloud"
+    args: ["auth", "activate-service-account", 
+    "sentiment-analysis-tfx@ml-tutorial-372117.iam.gserviceaccount.com", 
+    "--key-file", "ml-tutorial-372117-sa-keys.json"
+    ]
+    id: "Auth Service Account Again"
+    waitFor: ["Copy Credential to Local"]
+
   - name: "gcr.io/$_PROJECT/cb-tfx:latest"
     entrypoint: "tfx"
     args:
@@ -101,4 +119,4 @@ steps:
       ]
     dir: "sentiment-analysis-tfx/tfx-pipeline"
     id: "Create Pipeline Run"
-    waitFor: ["Manual Select Project Id"]
+    waitFor: ["Auth Service Account Again"]
